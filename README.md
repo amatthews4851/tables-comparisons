@@ -1,70 +1,11 @@
-# Getting Started with Create React App
+# React Table Comparison
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a toy application made for the sole purpose to compare the making of two different APIs for making a table in React.
 
-## Available Scripts
+## Props Table
 
-In the project directory, you can run:
+I think this is probably the most common and what comes to mind for a majority of people when the task to come up with an API is, because it is a way to make a simple API for a common, one-size-fits-all table. The main drawback of doing it this way is that it feels a little fragile and inflexible, and is prone to prop-hell if down the line the table needs to have more options. The code for how one might implement this API lives in [src/components/props_table/index.js](./src/components/props_table/index.js), and the code for how an example of how someone might use it lives in [src/props_table_example.js](./src/props_table_example.js).
 
-### `npm start`
+## Elements Table
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This is an alternative, where instead of a single component with fancy props, it is just a lego kit to build your own table with all the functionality you need. This makes the table as flexible as it can be, while still creating a uniform look and feel. Only drawback is using it feels a little more cumbersome, as you will basically need to create a table from scratch every time. The code for how one might implement this API lives in [src/components/elements_table/index.js](./src/components/elements_table/index.js), and the code for how an example of how someone might use it lives in [src/elements_table_example.js](./src/elements_table_example.js).
