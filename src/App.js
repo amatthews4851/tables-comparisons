@@ -41,6 +41,10 @@ const data = [
 ];
 
 function App() {
+  React.useEffect(() => {
+    document.title = "Table Comparison";
+  }, []);
+
   const [dataState, setDataState] = React.useState(() =>
     data.map((value) => ({
       ...value,
