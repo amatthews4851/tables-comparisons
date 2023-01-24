@@ -52,8 +52,10 @@ function App() {
     <div className="p-4">
       <h1 className="text-3xl">Tables</h1>
 
+      <h2 className="mt-8 mb-2 ml-2 text-xl">Elements Table</h2>
       <ElementsTableExample data={dataState} setData={setDataState} />
 
+      <h2 className="mt-8 mb-2 ml-2 text-xl">Props Table</h2>
       <PropsTableExample data={dataState} setData={setDataState} />
     </div>
   );

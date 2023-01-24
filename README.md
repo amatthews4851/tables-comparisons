@@ -1,6 +1,6 @@
 # React Table Comparison
 
-This is a toy application made for the sole purpose to compare the making of two different APIs for making a table in React.
+This is a toy application made for the sole purpose to compare the making of two different APIs for making a table in React. These two tables can be viewed at https://amatthews4851.github.io/tables-comparisons/, but spoiler alert, they are pretty similar.
 
 ## Props Table
 
