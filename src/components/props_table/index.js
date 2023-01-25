@@ -9,7 +9,7 @@ import { sortBy } from "lodash";
  *       key: string,
  *       isChecked?: boolean,
  *       setIsChecked?: (value: boolean) => void,
- *       kebobValues?: { label: string, onClick: () => void},
+ *       kebabValues?: { label: string, onClick: () => void},
  *       expandableContent?: React.ReactNode,
  *       values: any
  *     }[],
@@ -42,8 +42,8 @@ const PropsTable = ({ columns, data, setEveryRowIsSelected }) => {
     () => data.some((datum) => datum.setIsChecked),
     [data]
   );
-  const hasKebobMenu = React.useMemo(
-    () => data.some((datum) => !!datum.kebobValues),
+  const haskebabMenu = React.useMemo(
+    () => data.some((datum) => !!datum.kebabValues),
     [data]
   );
 
@@ -65,13 +65,14 @@ const PropsTable = ({ columns, data, setEveryRowIsSelected }) => {
             )}
             {columns.map((column) => (
               <th
+                key={column.title}
                 onClick={() => setSortKey(column.field)}
                 className="first:pl-4 last:pr-4 py-2 text-white text-left"
               >
                 {column.title} <Indicator column={column} />
               </th>
             ))}
-            {hasKebobMenu && (
+            {haskebabMenu && (
               <th className="first:pl-4 last:pr-4 py-2 text-white text-left" />
             )}
           </tr>
@@ -92,11 +93,11 @@ const PropsTable = ({ columns, data, setEveryRowIsSelected }) => {
                 </td>
               )}
               {columns.map((column) => (
-                <td className="first:pl-4 last:pr-4 py-2">
+                <td key={column.field} className="first:pl-4 last:pr-4 py-2">
                   {datum.values[column.field]}
                 </td>
               ))}
-              {datum.kebobValues && (
+              {datum.kebabValues && (
                 <td className="first:pl-4 last:pr-4 py-2">
                   <div
                     onClick={() =>
@@ -107,7 +108,7 @@ const PropsTable = ({ columns, data, setEveryRowIsSelected }) => {
                     <div className="text-center rotate-90">...</div>
                     {openMenu === index && (
                       <div className="absolute right-1/2 top-1/2 bg-white border border-slate-300 rounded p-4 z-10">
-                        {datum.kebobValues.map((option) => (
+                        {datum.kebabValues.map((option) => (
                           <div
                             key={option.label}
                             onClick={() => {

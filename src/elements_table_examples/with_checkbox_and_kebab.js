@@ -1,7 +1,7 @@
 import React from "react";
-import * as T from "./components/elements_table";
+import * as T from "../components/elements_table";
 
-function ElementsTableExample({ data, setData }) {
+function ElementsTableWithCheckboxAndKebab({ data, setData }) {
   const allChecked = React.useMemo(
     () => data.every(({ checked }) => checked),
     [data]
@@ -84,7 +84,7 @@ function ElementsTableExample({ data, setData }) {
         {sortedData.map((row) => {
           const index = data.findIndex((datum) => datum.name === row.name);
           return (
-            <T.TableDataRow>
+            <T.TableDataRow key={row.email}>
               <T.TableDataCheckbox
                 checked={row.checked}
                 onChange={() => {
@@ -125,4 +125,4 @@ function ElementsTableExample({ data, setData }) {
   );
 }
 
-export default ElementsTableExample;
+export default ElementsTableWithCheckboxAndKebab;

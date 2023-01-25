@@ -1,7 +1,7 @@
 import * as React from "react";
-import PropsTable from "./components/props_table";
+import PropsTable from "../components/props_table";
 
-const PropsTableExample = ({ data, setData }) => {
+const PropsTableWithCheckboxExample = ({ data, setData }) => {
   return (
     <PropsTable
       columns={[
@@ -19,27 +19,10 @@ const PropsTableExample = ({ data, setData }) => {
           newState[index].checked = value;
           setData(newState);
         },
-        kebobValues: [
-          {
-            label: "Resend",
-            onClick: () => alert("Resent Invitation"),
-          },
-          {
-            label: "Delete",
-            onClick: () => {
-              const newData = [
-                ...data.slice(0, index),
-                ...data.slice(index + 1),
-              ];
-              setData(newData);
-              alert("User Deleted");
-            },
-          },
-        ],
         values: row,
       }))}
     />
   );
 };
 
-export default PropsTableExample;
+export default PropsTableWithCheckboxExample;
