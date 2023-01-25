@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/tables-comparisons/static/css/main.e5a4942f.css",
-    "main.js": "/tables-comparisons/static/js/main.6a3b0160.js",
+    "main.css": "/tables-comparisons/static/css/main.bbd33654.css",
+    "main.js": "/tables-comparisons/static/js/main.7ca02636.js",
     "index.html": "/tables-comparisons/index.html",
-    "main.e5a4942f.css.map": "/tables-comparisons/static/css/main.e5a4942f.css.map",
-    "main.6a3b0160.js.map": "/tables-comparisons/static/js/main.6a3b0160.js.map"
+    "main.bbd33654.css.map": "/tables-comparisons/static/css/main.bbd33654.css.map",
+    "main.7ca02636.js.map": "/tables-comparisons/static/js/main.7ca02636.js.map"
   },
   "entrypoints": [
-    "static/css/main.e5a4942f.css",
-    "static/js/main.6a3b0160.js"
+    "static/css/main.bbd33654.css",
+    "static/js/main.7ca02636.js"
   ]
 }
