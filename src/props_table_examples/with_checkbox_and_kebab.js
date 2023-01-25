@@ -13,31 +13,38 @@ const PropsTableWithCheckboxAndKebabExample = ({ data, setData }) => {
       ]}
       data={data.map((row, index) => ({
         key: row.name,
-        isChecked: row.checked,
-        setIsChecked: (value) => {
-          const newState = [...data];
-          newState[index].checked = value;
-          setData(newState);
-        },
-        kebabValues: [
-          {
-            label: "Resend",
-            onClick: () => alert("Resent Invitation"),
-          },
-          {
-            label: "Delete",
-            onClick: () => {
-              const newData = [
-                ...data.slice(0, index),
-                ...data.slice(index + 1),
-              ];
-              setData(newData);
-              alert("User Deleted");
-            },
-          },
-        ],
+        ...(row.permissions !== "Admin"
+          ? {
+              isChecked: row.checked,
+              setIsChecked: (value) => {
+                const newState = [...data];
+                newState[index].checked = value;
+                setData(newState);
+              },
+              kebabValues: [
+                {
+                  label: "Resend",
+                  onClick: () => alert("Resent Invitation"),
+                },
+                {
+                  label: "Delete",
+                  onClick: () => {
+                    const newData = [
+                      ...data.slice(0, index),
+                      ...data.slice(index + 1),
+                    ];
+                    setData(newData);
+                    alert("User Deleted");
+                  },
+                },
+              ],
+            }
+          : {}),
         values: row,
       }))}
+      setEveryRowIsSelected={(isChecked) =>
+        setData(data.map((datum) => ({ ...datum, isChecked })))
+      }
     />
   );
 };

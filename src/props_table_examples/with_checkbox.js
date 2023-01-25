@@ -13,14 +13,21 @@ const PropsTableWithCheckboxExample = ({ data, setData }) => {
       ]}
       data={data.map((row, index) => ({
         key: row.name,
-        isChecked: row.checked,
-        setIsChecked: (value) => {
-          const newState = [...data];
-          newState[index].checked = value;
-          setData(newState);
-        },
+        ...(row.permissions !== "Admin"
+          ? {
+              isChecked: row.checked,
+              setIsChecked: (value) => {
+                const newState = [...data];
+                newState[index].checked = value;
+                setData(newState);
+              },
+            }
+          : {}),
         values: row,
       }))}
+      setEveryRowIsSelected={(checked) =>
+        setData(data.map((datum) => ({ ...datum, checked })))
+      }
     />
   );
 };

@@ -85,38 +85,46 @@ function ElementsTableWithCheckboxAndKebab({ data, setData }) {
           const index = data.findIndex((datum) => datum.name === row.name);
           return (
             <T.TableDataRow key={row.email}>
-              <T.TableDataCheckbox
-                checked={row.checked}
-                onChange={() => {
-                  const newState = [...data];
-                  newState[index].checked = !row.checked;
-                  setData(newState);
-                }}
-              />
+              {row.permissions !== "Admin" ? (
+                <T.TableDataCheckbox
+                  checked={row.checked}
+                  onChange={() => {
+                    const newState = [...data];
+                    newState[index].checked = !row.checked;
+                    setData(newState);
+                  }}
+                />
+              ) : (
+                <T.TableDataCell />
+              )}
               <T.TableDataCell>{row.name}</T.TableDataCell>
               <T.TableDataCell>{row.email}</T.TableDataCell>
               <T.TableDataCell>{row.permissions}</T.TableDataCell>
               <T.TableDataCell>{row.status}</T.TableDataCell>
               <T.TableDataCell>{row.lastActive}</T.TableDataCell>
-              <T.TableDataKebab
-                options={[
-                  {
-                    label: "Resend",
-                    onClick: () => alert("Resent Invitation"),
-                  },
-                  {
-                    label: "Delete",
-                    onClick: () => {
-                      const newData = [
-                        ...data.slice(0, index),
-                        ...data.slice(index + 1),
-                      ];
-                      setData(newData);
-                      alert("User Deleted");
+              {row.permissions !== "Admin" ? (
+                <T.TableDataKebab
+                  options={[
+                    {
+                      label: "Resend",
+                      onClick: () => alert("Resent Invitation"),
                     },
-                  },
-                ]}
-              />
+                    {
+                      label: "Delete",
+                      onClick: () => {
+                        const newData = [
+                          ...data.slice(0, index),
+                          ...data.slice(index + 1),
+                        ];
+                        setData(newData);
+                        alert("User Deleted");
+                      },
+                    },
+                  ]}
+                />
+              ) : (
+                <T.TableDataCell />
+              )}
             </T.TableDataRow>
           );
         })}

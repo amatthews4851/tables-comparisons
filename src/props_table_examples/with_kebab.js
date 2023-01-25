@@ -13,23 +13,26 @@ const PropsTableWithKebabExample = ({ data, setData }) => {
       ]}
       data={data.map((row, index) => ({
         key: row.name,
-        kebabValues: [
-          {
-            label: "Resend",
-            onClick: () => alert("Resent Invitation"),
-          },
-          {
-            label: "Delete",
-            onClick: () => {
-              const newData = [
-                ...data.slice(0, index),
-                ...data.slice(index + 1),
-              ];
-              setData(newData);
-              alert("User Deleted");
-            },
-          },
-        ],
+        kebabValues:
+          row.permissions !== "Admin"
+            ? [
+                {
+                  label: "Resend",
+                  onClick: () => alert("Resent Invitation"),
+                },
+                {
+                  label: "Delete",
+                  onClick: () => {
+                    const newData = [
+                      ...data.slice(0, index),
+                      ...data.slice(index + 1),
+                    ];
+                    setData(newData);
+                    alert("User Deleted");
+                  },
+                },
+              ]
+            : null,
         values: row,
       }))}
     />

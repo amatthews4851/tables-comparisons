@@ -35,14 +35,14 @@ const PropsTable = ({ columns, data, setEveryRowIsSelected }) => {
     ) : null;
 
   const everyRowIsSelected = React.useMemo(
-    () => data.every((datum) => datum.isChecked),
+    () => data.every((datum) => datum.isChecked ?? true),
     [data]
   );
   const hasSelectableRows = React.useMemo(
     () => data.some((datum) => datum.setIsChecked),
     [data]
   );
-  const haskebabMenu = React.useMemo(
+  const hasKebabMenu = React.useMemo(
     () => data.some((datum) => !!datum.kebabValues),
     [data]
   );
@@ -72,7 +72,7 @@ const PropsTable = ({ columns, data, setEveryRowIsSelected }) => {
                 {column.title} <Indicator column={column} />
               </th>
             ))}
-            {haskebabMenu && (
+            {hasKebabMenu && (
               <th className="first:pl-4 last:pr-4 py-2 text-white text-left" />
             )}
           </tr>
@@ -83,7 +83,7 @@ const PropsTable = ({ columns, data, setEveryRowIsSelected }) => {
               key={datum.key}
               className="hover:bg-slate-100 hover:text-blue-800"
             >
-              {datum.setIsChecked && (
+              {datum.setIsChecked ? (
                 <td className="first:pl-4 last:pr-4 py-2">
                   <input
                     type="checkbox"
@@ -91,7 +91,9 @@ const PropsTable = ({ columns, data, setEveryRowIsSelected }) => {
                     onChange={() => datum.setIsChecked(!datum.isChecked)}
                   />
                 </td>
-              )}
+              ) : hasSelectableRows ? (
+                <td className="first:pl-4 last:pr-4 py-2" />
+              ) : null}
               {columns.map((column) => (
                 <td key={column.field} className="first:pl-4 last:pr-4 py-2">
                   {datum.values[column.field]}

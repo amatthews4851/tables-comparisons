@@ -3,7 +3,10 @@ import * as T from "../components/elements_table";
 
 function ElementsTableWithCheckbox({ data, setData }) {
   const allChecked = React.useMemo(
-    () => data.every(({ checked }) => checked),
+    () =>
+      data.every(
+        ({ checked, permissions }) => permissions === "Admin" || checked
+      ),
     [data]
   );
   const toggleAllChecked = () => {
@@ -84,14 +87,18 @@ function ElementsTableWithCheckbox({ data, setData }) {
           const index = data.findIndex((datum) => datum.name === row.name);
           return (
             <T.TableDataRow key={row.email}>
-              <T.TableDataCheckbox
-                checked={row.checked}
-                onChange={() => {
-                  const newState = [...data];
-                  newState[index].checked = !row.checked;
-                  setData(newState);
-                }}
-              />
+              {row.permissions !== "Admin" ? (
+                <T.TableDataCheckbox
+                  checked={row.checked}
+                  onChange={() => {
+                    const newState = [...data];
+                    newState[index].checked = !row.checked;
+                    setData(newState);
+                  }}
+                />
+              ) : (
+                <T.TableDataCell />
+              )}
               <T.TableDataCell>{row.name}</T.TableDataCell>
               <T.TableDataCell>{row.email}</T.TableDataCell>
               <T.TableDataCell>{row.permissions}</T.TableDataCell>

@@ -64,25 +64,29 @@ function ElementsTableWithKebab({ data, setData }) {
               <T.TableDataCell>{row.permissions}</T.TableDataCell>
               <T.TableDataCell>{row.status}</T.TableDataCell>
               <T.TableDataCell>{row.lastActive}</T.TableDataCell>
-              <T.TableDataKebab
-                options={[
-                  {
-                    label: "Resend",
-                    onClick: () => alert("Resent Invitation"),
-                  },
-                  {
-                    label: "Delete",
-                    onClick: () => {
-                      const newData = [
-                        ...data.slice(0, index),
-                        ...data.slice(index + 1),
-                      ];
-                      setData(newData);
-                      alert("User Deleted");
+              {row.permissions !== "Admin" ? (
+                <T.TableDataKebab
+                  options={[
+                    {
+                      label: "Resend",
+                      onClick: () => alert("Resent Invitation"),
                     },
-                  },
-                ]}
-              />
+                    {
+                      label: "Delete",
+                      onClick: () => {
+                        const newData = [
+                          ...data.slice(0, index),
+                          ...data.slice(index + 1),
+                        ];
+                        setData(newData);
+                        alert("User Deleted");
+                      },
+                    },
+                  ]}
+                />
+              ) : (
+                <T.TableDataCell />
+              )}
             </T.TableDataRow>
           );
         })}
